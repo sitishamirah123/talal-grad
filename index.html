@@ -1,0 +1,1597 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071426">
+<title>Finally, Mr. Engineer | Talal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #071426;
+  --navy2: #0c2038;
+  --gold: #d8b76a;
+  --gold-light: #f4dfaa;
+  --blue: #398bda;
+  --white: #f7f5ef;
+  --muted: #a8b4c5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+.serif {
+  font-family: 'Playfair Display', serif;
+}
+
+section {
+  position: relative;
+  padding: 110px 8%;
+  overflow: hidden;
+}
+
+.section-label {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 55px);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.section-description {
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 650px;
+  font-size: 15px;
+}
+
+.center {
+  text-align: center;
+}
+
+.center .section-description {
+  margin: auto;
+}
+
+.glow {
+  text-shadow: 0 0 25px rgba(216,183,106,.3);
+}
+
+.gold-line {
+  height: 1px;
+  width: 65px;
+  background: var(--gold);
+  margin: 25px 0;
+}
+
+.center .gold-line {
+  margin: 25px auto;
+}
+
+/* BACKGROUND EFFECTS */
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(30,104,180,.10);
+  filter: blur(100px);
+  top: 15%;
+  right: -200px;
+}
+
+.ambient::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(216,183,106,.07);
+  filter: blur(100px);
+  bottom: 5%;
+  left: -200px;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ENTRANCE */
+
+#entrance {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 45%, #152d4c 0%, #071426 65%);
+}
+
+.gift-card {
+  max-width: 650px;
+  width: 100%;
+  padding: 55px 30px;
+  border: 1px solid rgba(216,183,106,.3);
+  background: rgba(12,32,56,.65);
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  box-shadow: 0 20px 80px rgba(0,0,0,.25);
+}
+
+.gift-icon {
+  font-size: 55px;
+  margin-bottom: 25px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-12px); }
+}
+
+.gift-card h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 6vw, 53px);
+  color: var(--gold-light);
+  margin-bottom: 20px;
+}
+
+.gift-card p {
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 12px;
+}
+
+.gift-question {
+  color: var(--white) !important;
+  margin: 30px 0 !important;
+  font-size: 17px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: 1px solid var(--gold);
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: .3s;
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, var(--gold), #f1d99b);
+  color: #071426;
+}
+
+.btn-yes:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(216,183,106,.3);
+}
+
+.btn-no {
+  background: transparent;
+  color: var(--white);
+}
+
+.btn-no:hover {
+  background: rgba(255,255,255,.08);
+}
+
+#no-message {
+  display: none;
+  background: rgba(216,183,106,.1);
+  border: 1px solid rgba(216,183,106,.3);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 25px;
+  animation: appear .5s ease;
+}
+
+#no-message h3 {
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+/* MAIN WEBSITE */
+
+#main-site {
+  display: none;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 25px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+}
+
+.nav-tag {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+/* HERO */
+
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center, #19365a 0%, #0b1b31 50%, #071426 100%);
+}
+
+.hero-content {
+  max-width: 900px;
+}
+
+.hero-overline {
+  letter-spacing: 6px;
+  color: var(--gold);
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 10vw, 105px);
+  line-height: 1.1;
+  color: var(--gold-light);
+  margin-bottom: 20px;
+}
+
+.hero-name {
+  font-size: clamp(17px, 3vw, 25px);
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.hero-degree {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2;
+  margin-bottom: 30px;
+}
+
+.hero-badge {
+  display: inline-block;
+  border: 1px solid rgba(216,183,106,.5);
+  color: var(--gold);
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 3px;
+  animation: float 2s infinite;
+}
+
+/* ENGINEER TERMINAL */
+
+#terminal-section {
+  background: #09182b;
+}
+
+.terminal {
+  max-width: 760px;
+  margin: 45px auto 0;
+  background: #050d18;
+  border: 1px solid rgba(57,139,218,.35);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(0,0,0,.3);
+}
+
+.terminal-top {
+  padding: 15px 20px;
+  background: #10243c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.terminal-body {
+  padding: 30px;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 2.2;
+  color: #a7c6e9;
+  min-height: 240px;
+}
+
+.terminal-body .success {
+  color: #79dba6;
+}
+
+.terminal-body .command {
+  color: var(--gold);
+}
+
+/* PHOTOS */
+
+#gallery {
+  background: linear-gradient(180deg, #071426, #0c2038);
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 55px auto 0;
+}
+
+.photo-card {
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(216,183,106,.2);
+  border-radius: 18px;
+  padding: 15px;
+  transition: .4s;
+}
+
+.photo-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold);
+}
+
+.photo-frame {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg,#152d4c,#09182b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  padding: 25px;
+  text-align: center;
+  color: var(--muted);
+  line-height: 2;
+}
+
+.photo-caption {
+  padding: 20px 8px 10px;
+}
+
+.photo-caption h3 {
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  margin-bottom: 8px;
+}
+
+.photo-caption p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* APPRECIATION */
+
+#appreciation {
+  background: #0c2038;
+}
+
+.letter {
+  max-width: 800px;
+  margin: 45px auto 0;
+  padding: clamp(25px, 6vw, 55px);
+  background: linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  border: 1px solid rgba(216,183,106,.25);
+  border-radius: 18px;
+  line-height: 2.1;
+  color: #d6deea;
+  font-size: 15px;
+}
+
+.letter p {
+  margin-bottom: 20px;
+}
+
+.letter .salutation {
+  font-family: 'Playfair Display',serif;
+  color: var(--gold-light);
+  font-size: 27px;
+  margin-bottom: 25px;
+}
+
+.letter .signature {
+  color: var(--gold);
+  font-family: 'Playfair Display',serif;
+  font-size: 23px;
+  margin-top: 30px;
+}
+
+/* ACHIEVEMENTS */
+
+#achievements {
+  background: #071426;
+}
+
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+  max-width: 950px;
+  margin: 50px auto 0;
+}
+
+.achievement {
+  text-align: center;
+  padding: 30px 18px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(216,183,106,.2);
+  border-radius: 16px;
+}
+
+.achievement-icon {
+  font-size: 32px;
+  margin-bottom: 17px;
+}
+
+.achievement h3 {
+  color: var(--gold);
+  font-family: 'Playfair Display',serif;
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.achievement p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* FINAL MESSAGE */
+
+#finale {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center, #19365a 0%, #071426 75%);
+}
+
+.final-message {
+  max-width: 720px;
+  margin: 30px auto;
+  color: #c1ccda;
+  font-size: 15px;
+  line-height: 2.2;
+}
+
+.final-title {
+  color: var(--gold-light);
+  font-family: 'Playfair Display',serif;
+  font-size: clamp(38px,7vw,75px);
+  line-height: 1.2;
+}
+
+.final-sign {
+  color: var(--gold);
+  font-family: 'Playfair Display',serif;
+  font-size: 22px;
+  margin-top: 35px;
+}
+
+footer {
+  padding: 30px 20px;
+  background: #050d18;
+  text-align: center;
+  color: #748399;
+  font-size: 11px;
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+/* EXTRA SURPRISE */
+
+#secret-message {
+  display: none;
+  max-width: 600px;
+  margin: 35px auto 0;
+  padding: 30px;
+  background: rgba(216,183,106,.09);
+  border: 1px solid rgba(216,183,106,.4);
+  border-radius: 15px;
+  animation: appear .7s ease;
+  line-height: 2;
+  color: var(--gold-light);
+}
+
+.secret-btn {
+  margin-top: 25px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 14px 25px;
+  border-radius: 50px;
+  letter-spacing: 1px;
+  transition: .3s;
+}
+
+.secret-btn:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* MUSIC PLAYER */
+
+.music-player {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  background: rgba(8,24,43,.94);
+  border: 1px solid rgba(216,183,106,.4);
+  border-radius: 50px;
+  padding: 10px 17px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+}
+
+.music-toggle {
+  background: var(--gold);
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: var(--navy);
+  font-size: 15px;
+}
+
+.music-info {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--white);
+}
+
+.music-info small {
+  display: block;
+  color: var(--muted);
+}
+
+/* CONFETTI */
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  z-index: 20;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes appear {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+  section {
+    padding: 85px 7%;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+    max-width: 430px;
+  }
+
+  .achievement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    padding: 20px 7%;
+  }
+
+  .nav-tag {
+    display: none;
+  }
+
+  .gift-card {
+    padding: 45px 20px;
+  }
+
+  .terminal-body {
+    padding: 20px;
+    font-size: 11px;
+  }
+
+  .music-player {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="ambient"></div>
+<canvas id="particles"></canvas>
+
+<!-- ==========================
+     GIFT ENTRANCE
+=========================== -->
+
+<div id="entrance" class="content">
+  <div class="gift-card">
+
+    <div class="gift-icon">🎁</div>
+
+    <div class="section-label">A special delivery</div>
+
+    <h1>A Little Something<br>For You.</h1>
+
+    <p>Hey, Talal!</p>
+
+    <p>
+      Someone has prepared a little surprise
+      especially for you.
+    </p>
+
+    <p class="gift-question">
+      But first... will you accept this graduation gift?
+    </p>
+
+    <div class="btn-group">
+
+      <button class="btn btn-yes" onclick="acceptGift()">
+        YES! I'M CURIOUS ❤️
+      </button>
+
+      <button class="btn btn-no" id="noButton" onclick="rejectGift()">
+        NO 🙄
+      </button>
+
+    </div>
+
+    <div id="no-message">
+      <h3>HAHAHAHA! NICE TRY! 😂</h3>
+      <p>
+        Better luck next time, Mr. Engineer.
+        You really thought you could reject your own
+        graduation celebration?
+      </p>
+      <p>Unfortunately, there's no escape. 🤣</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ==========================
+     MAIN WEBSITE
+=========================== -->
+
+<div id="main-site" class="content">
+
+<nav>
+  <div class="nav-logo">T.S.A. ✦</div>
+  <div class="nav-tag">A CELEBRATION OF YOU · 2026</div>
+</nav>
+
+
+<!-- HERO -->
+
+<section id="hero">
+
+  <div class="hero-content">
+
+    <div class="hero-overline">
+      THE DAY WE CELEBRATE YOU
+    </div>
+
+    <h1 class="hero-title glow">
+      Finally,<br>Mr. Engineer.
+    </h1>
+
+    <div class="gold-line"></div>
+
+    <div class="hero-name">
+      TALAL SAEED ALKHANBASHI
+    </div>
+
+    <div class="hero-degree">
+      Bachelor of Computer Engineering with Honours<br>
+      Universiti Malaysia Perlis (UniMAP)
+    </div>
+
+    <div class="hero-badge">
+      OFFICIALLY A GRADUATE 🎓
+    </div>
+
+  </div>
+
+  <div class="scroll-down">SCROLL TO EXPLORE ↓</div>
+
+</section>
+
+
+<!-- TERMINAL -->
+
+<section id="terminal-section" class="center">
+
+  <div class="reveal">
+
+    <div class="section-label">System notification</div>
+
+    <h2 class="section-title">
+      A new achievement<br>
+      <span class="gold">has been unlocked.</span>
+    </h2>
+
+    <p class="section-description">
+      After years of assignments, debugging, difficult questions
+      and probably too much caffeine...
+      the system has something to report.
+    </p>
+
+  </div>
+
+  <div class="terminal reveal">
+
+    <div class="terminal-top">
+      <span class="dot" style="background:#ff6b6b"></span>
+      <span class="dot" style="background:#f5c451"></span>
+      <span class="dot" style="background:#64c98b"></span>
+      <span style="margin-left:10px">talal_graduation.exe</span>
+    </div>
+
+    <div class="terminal-body">
+      <div><span class="command">root@unimap:~$</span> initializing_graduation.exe</div>
+      <div>Loading academic achievements...</div>
+      <div>Checking assignment survival rate...</div>
+      <div>Checking engineering knowledge...</div>
+      <div>Verifying final qualification...</div>
+      <br>
+      <div class="success">✓ Degree successfully completed.</div>
+      <div class="success">✓ Engineer status verified.</div>
+      <div class="success">✓ Helping-friends reputation: LEGENDARY.</div>
+      <div class="success">✓ Graduation celebration: APPROVED.</div>
+      <br>
+      <div class="command">STATUS: CONGRATULATIONS, MR. ENGINEER! 🎓</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PHOTOGRAPH GALLERY -->
+
+<section id="gallery">
+
+  <div class="center reveal">
+
+    <div class="section-label">The graduate collection</div>
+
+    <h2 class="section-title">
+      Your Moment.<br>
+      <span class="gold">Your Achievement.</span>
+    </h2>
+
+    <p class="section-description">
+      Two pictures, one amazing achievement.
+      Because this milestone deserves to be remembered
+      and celebrated.
+    </p>
+
+  </div>
+
+  <div class="photo-grid">
+
+    <!-- ORIGINAL PHOTO -->
+
+    <div class="photo-card reveal">
+
+      <div class="photo-frame">
+
+        <img
+          src="Talal_original.jpeg"
+          alt="Talal - original photograph"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+        >
+
+        <div class="photo-placeholder" style="display:none">
+          📷<br>
+          Insert Talal's original photograph here.<br>
+          images/talal-original.jpg
+        </div>
+
+      </div>
+
+      <div class="photo-caption">
+        <h3>The Talal We Know.</h3>
+        <p>
+          The brilliant mind, the helpful friend,
+          and the person behind all those unforgettable
+          university memories.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- AI GRADUATION PHOTO -->
+
+    <div class="photo-card reveal">
+
+      <div class="photo-frame">
+
+        <img
+          src="Talal_UniMAP_Graduate.jpeg"
+          alt="Talal wearing UniMAP graduation attire"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+        >
+
+        <div class="photo-placeholder" style="display:none">
+          🎓<br>
+          Insert Talal's AI graduation portrait here.<br>
+          images/talal-graduation.jpg
+        </div>
+
+      </div>
+
+      <div class="photo-caption">
+        <h3>The Graduate.</h3>
+        <p>
+          The moment we wish you could have experienced
+          in person. But today, we're celebrating you
+          regardless.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <p class="center" style="margin-top:35px;color:var(--gold);font-family:'Playfair Display';font-size:19px">
+    You deserve this moment, Talal. ❤️
+  </p>
+
+</section>
+
+
+<!-- APPRECIATION LETTER -->
+
+<section id="appreciation">
+
+  <div class="center reveal">
+
+    <div class="section-label">A few words from a friend</div>
+
+    <h2 class="section-title">
+      More Than Just<br>
+      <span class="gold">An Engineer.</span>
+    </h2>
+
+    <p class="section-description">
+      A little appreciation for the person
+      who made university life a little better.
+    </p>
+
+  </div>
+
+  <div class="letter reveal">
+
+    <p class="salutation">Dear Talal,</p>
+
+    <p>
+      First of all, CONGRATULATIONS!
+      Look at you! Finally becoming an engineer.
+      Hahaha. I guess we can officially call you
+      Mr. Engineer now.
+    </p>
+
+    <p>
+      But seriously, I want you to know how much
+      I appreciate having you as a friend.
+    </p>
+
+    <p>
+      You're genuinely one of the smartest people
+      I've had the pleasure of knowing. And I don't
+      mean that only because you seem to have an
+      answer for almost everything.
+    </p>
+
+    <p>
+      Remember how whenever Dr. asks a question in
+      class, there's always that familiar voice ready
+      to answer? HAHAHA. Sometimes the rest of us
+      are still processing the question while you've
+      already figured out the answer.
+    </p>
+
+    <p>
+      Honestly, the classroom would not quite be
+      the same without that voice of yours.
+    </p>
+
+    <p>
+      But what makes you even more special is that
+      you don't keep all that knowledge to yourself.
+      You're always willing to help others, especially
+      when assignments get confusing, problems seem
+      impossible, or someone just doesn't know where
+      to start.
+    </p>
+
+    <p>
+      You take the time to explain things, share
+      what you know, and help people understand
+      something they once thought was too difficult.
+      That's something I genuinely admire about you.
+    </p>
+
+    <p>
+      Intelligence is one thing, but being willing
+      to use it to help others is another.
+      And I hope you never lose that quality.
+    </p>
+
+    <p>
+      Thank you for all those little moments,
+      the explanations, the help, the conversations,
+      and simply being someone people can count on.
+      You might not realise it, but those things
+      really do make a difference.
+    </p>
+
+    <p>
+      And now, about your graduation...
+    </p>
+
+    <p>
+      I know you couldn't attend your convocation,
+      and I can imagine that it wasn't how you
+      pictured this milestone in your life.
+      Perhaps you imagined wearing your robe,
+      taking pictures, celebrating with friends,
+      and experiencing the whole ceremony.
+    </p>
+
+    <p>
+      But please remember something:
+      missing the ceremony does not mean missing
+      the achievement.
+    </p>
+
+    <p>
+      You worked for this degree. You earned it.
+      All those difficult subjects, assignments,
+      challenges, and countless efforts brought
+      you here.
+    </p>
+
+    <p>
+      No ceremony, photograph, or stage is what
+      makes you a graduate. YOU are.
+    </p>
+
+    <p>
+      So please don't let one missed day make you
+      forget how far you've come.
+    </p>
+
+    <p>
+      I'm genuinely, genuinely proud of you, Talal.
+      And I hope you give yourself the credit
+      you deserve.
+    </p>
+
+    <p>
+      Now go enjoy your new title.
+      And don't worry, we'll still ask you for
+      assignment help even after graduation.
+      HAHAHAHA! 😂
+    </p>
+
+    <p>
+      Thank you for being you.
+      Here's to everything beautiful that
+      awaits you next.
+    </p>
+
+    <p class="signature">
+      With lots of appreciation,<br>
+      Your proud friend. ❤️
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ACHIEVEMENTS -->
+
+<section id="achievements">
+
+  <div class="center reveal">
+
+    <div class="section-label">Achievement unlocked</div>
+
+    <h2 class="section-title">
+      The Engineer's<br>
+      <span class="gold">Hall of Fame.</span>
+    </h2>
+
+    <p class="section-description">
+      Some achievements don't appear on a certificate.
+      But the people around you know they exist.
+    </p>
+
+  </div>
+
+  <div class="achievement-grid">
+
+    <div class="achievement reveal">
+      <div class="achievement-icon">🧠</div>
+      <h3>The Genius</h3>
+      <p>
+        The one who somehow understands
+        complicated things before everyone else.
+      </p>
+    </div>
+
+    <div class="achievement reveal">
+      <div class="achievement-icon">🎤</div>
+      <h3>The Class Voice</h3>
+      <p>
+        When Dr. asks a question,
+        everyone already knows who's going to answer.
+      </p>
+    </div>
+
+    <div class="achievement reveal">
+      <div class="achievement-icon">🤝</div>
+      <h3>The Helper</h3>
+      <p>
+        Always willing to explain,
+        guide and help when someone needs it.
+      </p>
+    </div>
+
+    <div class="achievement reveal">
+      <div class="achievement-icon">💻</div>
+      <h3>The Problem Solver</h3>
+      <p>
+        Debugging problems, solving challenges
+        and finding a way forward.
+      </p>
+    </div>
+
+    <div class="achievement reveal">
+      <div class="achievement-icon">🏆</div>
+      <h3>The Graduate</h3>
+      <p>
+        Bachelor of Computer Engineering
+        with Honours. Officially unlocked!
+      </p>
+    </div>
+
+    <div class="achievement reveal">
+      <div class="achievement-icon">❤️</div>
+      <h3>The Good Friend</h3>
+      <p>
+        More than knowledge and achievements,
+        someone people are lucky to know.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FINAL MESSAGE -->
+
+<section id="finale">
+
+  <div class="reveal">
+
+    <div class="section-label">Before you go...</div>
+
+    <h2 class="final-title">
+      The ceremony<br>
+      is one day.<br>
+      <span class="gold">The achievement<br>is yours forever.</span>
+    </h2>
+
+    <div class="gold-line"></div>
+
+    <div class="final-message">
+
+      <p>
+        Talal, this is not the end of your story.
+        It's the beginning of another chapter,
+        one filled with new opportunities,
+        challenges, adventures and achievements.
+      </p>
+
+      <br>
+
+      <p>
+        I hope life brings you wonderful things.
+        I hope you continue learning, growing,
+        helping people and becoming everything
+        you dream of being.
+      </p>
+
+      <br>
+
+      <p>
+        And whenever things get difficult,
+        remember the person who made it through
+        an entire Computer Engineering degree.
+        If you survived that, I think you're
+        capable of surviving almost anything.
+        HAHAHA! 😂
+      </p>
+
+    </div>
+
+    <h2 class="final-title" style="font-size:clamp(35px,6vw,65px)">
+      Congratulations,<br>
+      <span class="gold">Mr. Engineer!</span>
+    </h2>
+
+    <div class="final-sign">
+      Proud of you, always. ❤️
+    </div>
+
+    <button class="secret-btn" onclick="showSecret()">
+      ONE MORE THING... ✨
+    </button>
+
+    <div id="secret-message">
+
+      <h2 class="serif gold" style="margin-bottom:15px">
+        P.S. 😂
+      </h2>
+
+      <p>
+        Now that you're officially an engineer,
+        please don't become too busy for your friends.
+        We still have a lot of questions,
+        assignments (just kidding... maybe),
+        and random problems that need your genius brain.
+      </p>
+
+      <br>
+
+      <p>
+        But seriously, thank you for everything.
+        I'm lucky to have a friend like you.
+      </p>
+
+      <br>
+
+      <p style="font-size:22px;color:var(--gold-light)">
+        YOU DID IT, TALAL! 🎓💙
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+  MADE WITH APPRECIATION, FRIENDSHIP & A LITTLE BIT OF CODE.
+  <br>
+  A SPECIAL CELEBRATION FOR TALAL SAEED ALKHANBASHI.
+  <br>
+  © 2026 · FINALLY, MR. ENGINEER.
+</footer>
+
+</div>
+
+
+<!-- MUSIC PLAYER -->
+
+<div class="music-player" id="musicPlayer">
+
+  <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">
+    ▶
+  </button>
+
+  <div class="music-info">
+    End of Beginning
+    <small>Djo · Your graduation soundtrack</small>
+  </div>
+
+</div>
+
+<audio id="backgroundMusic" loop preload="none">
+  <source src="end-of-beginning.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* ==========================
+   GIFT INTERACTION
+=========================== */
+
+function rejectGift() {
+
+  const noButton = document.getElementById("noButton");
+  const message = document.getElementById("no-message");
+
+  message.style.display = "block";
+
+  // The NO option permanently disappears.
+  noButton.style.display = "none";
+}
+
+
+function acceptGift() {
+
+  document.getElementById("entrance").style.display = "none";
+
+  const main = document.getElementById("main-site");
+  main.style.display = "block";
+
+  document.getElementById("musicPlayer").style.display = "flex";
+
+  // Start the song automatically after Talal clicks YES.
+  // The browser allows this because it follows a user click.
+  music.play()
+    .then(() => {
+      musicToggle.innerHTML = "Ⅱ";
+      isPlaying = true;
+    })
+    .catch(() => {
+      // If the browser blocks playback or the file cannot be found,
+      // the player button remains available to start it manually.
+      musicToggle.innerHTML = "▶";
+      isPlaying = false;
+    });
+
+  window.scrollTo({top:0, behavior:"instant"});
+
+  startConfetti();
+
+  // Reveal content on scroll.
+  setTimeout(observeSections, 100);
+}
+
+
+/* ==========================
+   MUSIC PLAYER
+=========================== */
+
+const music = document.getElementById("backgroundMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+let isPlaying = false;
+
+function toggleMusic() {
+
+  if (isPlaying) {
+
+    music.pause();
+    musicToggle.innerHTML = "▶";
+    isPlaying = false;
+
+  } else {
+
+    music.play()
+      .then(() => {
+        musicToggle.innerHTML = "Ⅱ";
+        isPlaying = true;
+      })
+      .catch(() => {
+        alert("Please check your music file path.");
+      });
+
+  }
+}
+
+music.addEventListener("ended", () => {
+  isPlaying = false;
+  musicToggle.innerHTML = "▶";
+});
+
+
+/* ==========================
+   SECRET MESSAGE
+=========================== */
+
+function showSecret() {
+
+  const message = document.getElementById("secret-message");
+
+  message.style.display = "block";
+
+  message.scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
+
+  startConfetti();
+}
+
+
+/* ==========================
+   CONFETTI CELEBRATION
+=========================== */
+
+function startConfetti() {
+
+  const colors = [
+    "#d8b76a",
+    "#f4dfaa",
+    "#398bda",
+    "#ffffff"
+  ];
+
+  for(let i=0; i<110; i++) {
+
+    const piece = document.createElement("div");
+
+    piece.className = "confetti";
+
+    piece.style.left = Math.random()*100 + "vw";
+    piece.style.background =
+      colors[Math.floor(Math.random()*colors.length)];
+
+    piece.style.width = (Math.random()*7+4) + "px";
+    piece.style.height = (Math.random()*10+5) + "px";
+
+    piece.style.animationDuration =
+      (Math.random()*3+2) + "s";
+
+    piece.style.animationDelay =
+      Math.random()*1.5 + "s";
+
+    document.body.appendChild(piece);
+
+    setTimeout(() => piece.remove(), 7000);
+
+  }
+}
+
+
+/* ==========================
+   SCROLL REVEAL
+=========================== */
+
+let observer;
+
+function observeSections() {
+
+  if(observer) observer.disconnect();
+
+  observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+      if(entry.isIntersecting) {
+
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+
+      }
+
+    });
+
+  }, {threshold:0.12});
+
+  document.querySelectorAll(".reveal").forEach(el => {
+    observer.observe(el);
+  });
+
+}
+
+
+/* ==========================
+   BACKGROUND PARTICLES
+=========================== */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function resizeCanvas() {
+
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+
+  canvas.style.width = window.innerWidth + "px";
+  canvas.style.height = window.innerHeight + "px";
+
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+
+  particles = [];
+
+  for(let i=0;i<45;i++) {
+
+    particles.push({
+      x:Math.random()*window.innerWidth,
+      y:Math.random()*window.innerHeight,
+      r:Math.random()*1.7+.5,
+      speed:Math.random()*.25+.08,
+      opacity:Math.random()*.5+.15
+    });
+
+  }
+
+}
+
+function animateParticles() {
+
+  ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+
+  particles.forEach(p => {
+
+    p.y -= p.speed;
+
+    if(p.y < -5) {
+      p.y = window.innerHeight+5;
+      p.x = Math.random()*window.innerWidth;
+    }
+
+    ctx.beginPath();
+
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+
+    ctx.fillStyle =
+      `rgba(216,183,106,${p.opacity})`;
+
+    ctx.fill();
+
+  });
+
+  requestAnimationFrame(animateParticles);
+
+}
+
+window.addEventListener("resize", resizeCanvas);
+
+resizeCanvas();
+animateParticles();
+
+</script>
+
+</body>
+</html>
